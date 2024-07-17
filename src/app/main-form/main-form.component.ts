@@ -1,14 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main-form',
-  templateUrl: './main-form.component.html'
+  templateUrl: './main-form.component.html',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink,FormsModule,ReactiveFormsModule,CommonModule]
 })
 export class MainFormComponent implements OnInit {
-  mainForm: FormGroup;
+  mainForm: FormGroup = new FormGroup('');
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.mainForm = this.fb.group({
@@ -31,6 +35,6 @@ export class MainFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.mainForm.value);
+    console.log(this.mainForm?.value);
   }
 }
