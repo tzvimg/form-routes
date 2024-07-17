@@ -1,0 +1,16 @@
+<form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="mainControl">Main Control:</label>
+      <input id="mainControl" formControlName="mainControl">
+    </div>
+    
+    <div>
+      <button [routerLink]="['sub-form-a']">Sub Form A</button>
+      <button [routerLink]="['sub-form-b']">Sub Form B</button>
+    </div>
+  
+    <router-outlet></router-outlet>
+  
+    <button type="submit">Submit</button>
+  </form>
+  
